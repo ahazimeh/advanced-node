@@ -1,0 +1,24 @@
+{
+    "name": "advanced-node",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/ahazimeh/advanced-node.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/ahazimeh/advanced-node/issues"
+    },
+    "homepage": "https://github.com/ahazimeh/advanced-node#readme",
+    "dependencies": {
+      "express": "^4.18.2"
+    }
+  }
+  

@@ -1,0 +1,5 @@
+for some standard library function calls, the node c++ side and libuv decide to do expensive
+calculations outside the event loop entirely
+instead they make use of a thread pool
+The thread pool is a series of 4 threads that can be used for running computationally intensive tasks
+By default libuv creates 4 threads in this thread pool

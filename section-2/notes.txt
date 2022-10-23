@@ -1,0 +1,66 @@
+improving node performance:
+    cluster mode
+    worker threads
+
+ab -c 50 -n 500 localhost:3000/fast
+// try to make 50 requests at the same time for a total of 500 requests (c for concurrency)
+
+ab -c 1 -n 1 localhost:3000/
+
+npm i -g pm2
+
+pm2 start index.js -i 4 // 0 takes logical number of cpu cores on your pc
+pm2 delete index
+pm2 list
+pm2 show index // to show much more detailed information about everything that is going on in that set of children
+pm2 monit
+
+
+
+
+
+const express = require('express');
+const crypto = require('crypto');
+const app = express();
+const { Worker } = require('worker_threads');
+ 
+app.get('/', (req, res) => {
+  const worker = new Worker('./worker.js');
+ 
+  worker.on('message', function (message) {
+    console.log(message);
+    res.send('' + message);
+  });
+ 
+  worker.postMessage('start!');
+});
+ 
+app.get('/fast', (req, res) => {
+  res.send('This was fast!');
+});
+ 
+app.listen(3000);
+
+
+2. make another file called worker.js in the same root directory,
+
+const { parentPort } = require('worker_threads');
+ 
+parentPort.on('message', () => {
+  let counter = 0;
+  while (counter < 1e9) {
+    counter++;
+  }
+ 
+  parentPort.postMessage('' + counter);
+});
+
+https://github.com/StephenGrider/AdvancedNodeStarter.git
+
+const redis = require('redis');
+const redisUrl = 'redis://127.0.0.1:6379';
+const client = redis.createClient(redisUrl);
+client.get = util.promisify(client.get)
+const cachedBlogs = await client.get(req.user.id);
+client.set(req.user.id, JSON.stringify(blogs));
+client.flushall()
