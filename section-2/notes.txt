@@ -64,3 +64,10 @@ client.get = util.promisify(client.get)
 const cachedBlogs = await client.get(req.user.id);
 client.set(req.user.id, JSON.stringify(blogs));
 client.flushall()
+
+client.set('color', 'red', 'EX', 5); // expires after 5 seconds
+
+mongoose document refered to model instance
+
+
+const blogs = await Blog.find({ _user: req.user.id }).cache();
