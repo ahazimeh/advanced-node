@@ -1,1 +1,15 @@
 Puppeteer: to run a new browser window or new instance of chromium
+
+const session = 'eyJwYXNzcG9ydCI6eyJ1c2VyIjoiNjM1NTM5OTM5NzExMTMwYzgzOWQ2ZGM2In19'
+const Buffer = require('safe-buffer').Buffer;
+Buffer.from(session, 'base64').toString('utf8');
+result: '{"passport":{"user":"635539939711130c839d6dc6"}}'
+
+cookie-session has cookies package dependency
+cookies package has keygrip dependency
+
+const session = 'eyJwYXNzcG9ydCI6eyJ1c2VyIjoiNjM1NTM5OTM5NzExMTMwYzgzOWQ2ZGM2In19'
+const Keygrip = require('keygrip');
+const keygrip = new Keygrip(['123123123']);
+const session_signiture = keygrip.sign('session=' + session);
+keygrip.verify('session=' + session, session_signiture);
