@@ -16,3 +16,9 @@ keygrip.verify('session=' + session, session_signiture);
 
 if we didn't set domain when setting a cookie the we need to navigate to our application
 then set our cookie
+
+
+
+"jest": {
+    "setupTestFrameworkScriptFile": "./test/setup.js"
+},
