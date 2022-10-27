@@ -1,20 +1,23 @@
 const puppeteer = require('puppeteer')
 const sessionFactory = require('./factories/sessionFactory');
 const userFactory = require('./factories/userFactory');
-require('../services/login');
+// require('../services/login');
+const Page = require('./helpers/page');
 
 let browser, page;
 
 beforeEach(async () => {
-    browser = await puppeteer.launch({
-        headless: false
-    });
-    page = await browser.newPage();
+    page = await Page.build();
+    // browser = await puppeteer.launch({
+    //     headless: false
+    // });
+    // page = await browser.newPage();
     await page.goto('localhost:3000');
 })
 
 afterEach(async () => {
-    await browser.close();
+    await page.close();
+    // await browser.close();
 })
 
 test('the header has the correct text', async () => {
@@ -34,7 +37,8 @@ test('clicking login starts oauth flow', async () => {
 test.only('When signed in, show logout button', async () => {
     // const id = '635539939711130c839d6dc6';
 
-    await page.login();
+    await page.login1(); // this is from the helper page
+    // await page.login(); // this is from the function we monkeypatched
     // const user = await userFactory();
     // const {session, sig} = sessionFactory(user);
 
