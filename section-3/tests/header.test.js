@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer')
 const sessionFactory = require('./factories/sessionFactory');
 const userFactory = require('./factories/userFactory');
+require('../services/login');
 
 let browser, page;
 
@@ -30,16 +31,17 @@ test('clicking login starts oauth flow', async () => {
     expect(url).toMatch(/accounts\.google\.com/);
 })
 
-test('When signed in, show logout button', async () => {
+test.only('When signed in, show logout button', async () => {
     // const id = '635539939711130c839d6dc6';
 
-    const user = await userFactory();
-    const {session, sig} = sessionFactory(user);
+    await page.login();
+    // const user = await userFactory();
+    // const {session, sig} = sessionFactory(user);
 
-    await page.setCookie({name: 'session', value: session })
-    await page.setCookie({name: 'session.sig', value: sig })
-    await page.goto('localhost:3000');
-    await page.waitFor('a[href="/auth/logout"]'); // pause till the app finish rendering everything on the screen
+    // await page.setCookie({name: 'session', value: session })
+    // await page.setCookie({name: 'session.sig', value: sig })
+    // await page.goto('localhost:3000');
+    // await page.waitFor('a[href="/auth/logout"]'); // pause till the app finish rendering everything on the screen
 
     const text = await page.$eval('a[href="/auth/logout"]', el => el.innerHTML);
 
