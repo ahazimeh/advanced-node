@@ -1,3 +1,5 @@
+jest.setTimeout(5000) // 5000 is the default
+
 require('../models/User');
 require('../services/login');
 
