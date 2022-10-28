@@ -1,3 +1,4 @@
+Number.prototype._called = {};
 const puppeteer=  require('puppeteer');
 const sessionFactory = require('../factories/sessionFactory');
 const userFactory = require('../factories/userFactory');
@@ -5,7 +6,7 @@ const userFactory = require('../factories/userFactory');
 class CustomPage {
     static async build() {
         const browser = await puppeteer.launch({
-            headless: false
+            headless: false,
         })
 
         const page = await browser.newPage();
