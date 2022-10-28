@@ -1,0 +1,7 @@
+they call js node_js
+trusty is a linux os
+it is very small version of linux that works very nicely for small virtual machines that have very one off tasks
+
+nohup npm run start &
+& to be able to run other commands
+nohup: no hangup, if the shell is closed, don't kill anything this command creates
