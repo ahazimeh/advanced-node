@@ -5,3 +5,7 @@ it is very small version of linux that works very nicely for small virtual machi
 nohup npm run start &
 & to be able to run other commands
 nohup: no hangup, if the shell is closed, don't kill anything this command creates
+
+args: ['--no-sandbox'] // this will decrease the ammount of time for our tests to run
+
+for travis you need to add http:// before localhost:3000
