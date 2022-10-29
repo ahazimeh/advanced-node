@@ -1,0 +1,13 @@
+where do images get physically stored?
+How do images *get* to the place they should be stored?
+How do we relate images to a particular blog post?
+
+solution 1: In MongoDB but this is bad because it is too expensive
+soluition 2: In HD Attached to Server but this doesn't work with horizonal scalling
+Solution 3: Outside Data Store: Amazon S3, Azure File Storage, Google Cloud Storage
+
+even if the uploaded file ends up with image extension
+a user can still take an executable file and change the file extension
+but we should at least check the file extension and check if it is of image type
+
+using express server as a temp storage costs a lot of cpu
