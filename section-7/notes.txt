@@ -11,3 +11,5 @@ a user can still take an executable file and change the file extension
 but we should at least check the file extension and check if it is of image type
 
 using express server as a temp storage costs a lot of cpu
+
+<input type="file" accept="image/*" />
