@@ -13,3 +13,55 @@ but we should at least check the file extension and check if it is of image type
 using express server as a temp storage costs a lot of cpu
 
 <input type="file" accept="image/*" />
+
+create amazon s3 bucket
+after that generate a set of user credentials to get access to that bucket
+
+go to iam
+generate a policy
+    service:
+        s3
+        All S3 actions (s3:*)
+    resource:
+        bucket: Add ARN and add the bucket name
+        object: add the bucket name and for object name click any
+review policy
+
+generate a user
+    username: s3-blog-bucket
+    Select AWS access type: Programmatic access
+
+    attach existing policy
+
+npm i aws-sdk
+
+search for aws javascript sdk
+https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html
+aws sdk for javascript s3
+https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html
+go to getsignedurl
+
+putObject is what we refer to for the operation to upload a new file to amazon s3 bucket
+
+key property is the name of the file that we are going to upload
+
+
+go to bucket permissions
+cors
+I added this but we can put more restriction, video 163
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "POST",
+            "GET",
+            "PUT"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": []
+    }
+]
