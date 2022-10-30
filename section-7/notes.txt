@@ -65,3 +65,29 @@ I added this but we can put more restriction, video 163
         "ExposeHeaders": []
     }
 ]
+
+to allow users to view images go to bucket permissions
+bucket policy
+policy generator
+    Select Type of Policy: S3 Bucket Policy
+    principle: *
+    actions: GetObject
+    arn: arn:aws:s3:::my-blog-bucket-4534634545/* // from the page before it with /*
+
+
+
+{
+  "Id": "Policy1667063198218",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1667063195330",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::my-blog-bucket-4534634545/*",
+      "Principal": "*"
+    }
+  ]
+}
